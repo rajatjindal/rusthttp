@@ -41,3 +41,4 @@ jobs:
         with:
           fermyon_token: ${{ secrets.FERMYON_CLOUD_TOKEN }}
           manifest_file: spin.toml
+          run_build: false
