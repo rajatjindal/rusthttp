@@ -1,19 +1,17 @@
-name: Deploy Rust http
+name: deploy app preview
 on:
-  push:
-    branches:
-      - main
-      - variables
-    tags:
-      - "v*"
-
-  workflow_dispatch: {}
+  pull_request:
+    branches: "main"
+    types: ['opened', 'synchronize', 'reopened', 'closed']
 
 jobs:
-  build:
+  deploy-preview:
     runs-on: ubuntu-latest
+    if: ${{ !github.event.pull_request.head.repo.fork }}
+    name: Build and deploy
     steps:
       - uses: actions/checkout@v4
+
       - name: Install latest Rust stable toolchain
         shell: bash
         run: |
@@ -28,20 +26,15 @@ jobs:
         with:
           shared-key: "${{ runner.os }}-full-${{ hashFiles('./Cargo.lock') }}"
 
-      - name: setup spin
+      - name: Setup `spin`
         uses: fermyon/actions/spin/setup@v1
         with:
-          github_token: ${{ github.token }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           plugins: aka
 
-      - name: build app
-        run: spin build
-
-      - name: build and deploy
-        uses: rajatjindal/actions/spin/aka-deploy@also-known-as
-        id: deploy
+      - name: build and deploy preview
+        uses: fermyon/actions/spin/aka-preview@v1
         with:
           fermyon_aka_token: ${{ secrets.FERMYON_AKA_TOKEN }}
-          manifest_file: spin.toml
-          run_build: false
-
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          undeploy: ${{ github.event.pull_request && github.event.action == 'closed' }}
