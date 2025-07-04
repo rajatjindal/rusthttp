@@ -21,24 +21,10 @@ jobs:
           github_token: ${{ github.token }}
           plugins: cloud,aka
 
-      # - name: Install latest Rust stable toolchain
-      #   shell: bash
-      #   run: |
-      #     rustup toolchain install 1.73 --component clippy --component rustfmt
-      #     rustup default 1.73
-
-      # - name: "Install Wasm Rust target"
-      #   run: rustup target add wasm32-wasi && rustup target add wasm32-unknown-unknown
-      #   shell: bash
-
-      # - uses: Swatinem/rust-cache@v2
-      #   with:
-      #     shared-key: "${{ runner.os }}-full-${{ hashFiles('./streaming-api/Cargo.lock') }}"
-
       - name: build and deploy
-        uses: rajatjindal/actions/spin/deploy@also-known-as
+        uses: rajatjindal/actions/spin/aka-deploy@also-known-as
         id: deploy
         with:
-          fermyon_token: ${{ secrets.FERMYON_CLOUD_TOKEN }}
+          fermyon_aka_token: ${{ secrets.FERMYON_AKA_TOKEN }}
           manifest_file: spin.toml
           run_build: false
