@@ -11,7 +11,7 @@ route = "/..."
 component = "rusthttp"
 
 [component.rusthttp]
-source = "target/wasm32-wasip1/release/rusthttp.wasm"
+source = "rusthttp.wasm"
 allowed_outbound_hosts = []
 [component.rusthttp.build]
 command = "cargo build --target wasm32-wasip1 --release && cp target/wasm32-wasip1/release/rusthttp.wasm rusthttp.wasm"
