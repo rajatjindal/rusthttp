@@ -33,7 +33,7 @@ jobs:
           plugins: aka
 
       - name: build and deploy preview
-        uses: fermyon/actions/spin/aka-preview@v1
+        uses: rajatjindal/actions/spin/aka-preview@v1
         with:
           fermyon_aka_token: ${{ secrets.FERMYON_AKA_TOKEN }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
