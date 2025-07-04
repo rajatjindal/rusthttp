@@ -8,6 +8,6 @@ fn handle_rusthttp(req: Request) -> anyhow::Result<impl IntoResponse> {
     Ok(Response::builder()
         .status(200)
         .header("content-type", "text/plain")
-        .body("Hello World!")
+        .body("Hello World from GitHub actions!")
         .build())
 }
