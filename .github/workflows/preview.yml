@@ -4,6 +4,9 @@ on:
     branches: "main"
     types: ['opened', 'synchronize', 'reopened', 'closed']
 
+permissions:
+  pull-requests: write
+
 jobs:
   deploy-preview:
     runs-on: ubuntu-latest
@@ -33,7 +36,7 @@ jobs:
           plugins: aka
 
       - name: build and deploy preview
-        uses: rajatjindal/actions/spin/aka-preview@v1
+        uses: rajatjindal/actions/spin/aka-preview@also-known-as
         with:
           fermyon_aka_token: ${{ secrets.FERMYON_AKA_TOKEN }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
