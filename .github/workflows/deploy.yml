@@ -36,7 +36,7 @@ jobs:
       #     shared-key: "${{ runner.os }}-full-${{ hashFiles('./streaming-api/Cargo.lock') }}"
 
       - name: build and deploy
-        uses: fermyon/actions/spin/deploy@v1
+        uses: rajatjindal/actions/spin/deploy@v1
         id: deploy
         with:
           fermyon_token: ${{ secrets.FERMYON_CLOUD_TOKEN }}
