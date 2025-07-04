@@ -19,7 +19,7 @@ jobs:
         uses: fermyon/actions/spin/setup@v1
         with:
           github_token: ${{ github.token }}
-          plugins: cloud
+          plugins: cloud,aka
 
       # - name: Install latest Rust stable toolchain
       #   shell: bash
