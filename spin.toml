@@ -14,5 +14,5 @@ component = "rusthttp"
 source = "target/wasm32-wasip1/release/rusthttp.wasm"
 allowed_outbound_hosts = []
 [component.rusthttp.build]
-command = "cargo build --target wasm32-wasip1 --release"
+command = "cargo build --target wasm32-wasip1 --release && cp target/wasm32-wasip1/release/rusthttp.wasm rusthttp.wasm"
 watch = ["src/**/*.rs", "Cargo.toml"]
