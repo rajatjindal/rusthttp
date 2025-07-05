@@ -44,4 +44,5 @@ jobs:
           fermyon_aka_token: ${{ secrets.FERMYON_AKA_TOKEN }}
           manifest_file: spin.toml
           run_build: false
+          account_id: "79692a99-5c7f-4e32-b4db-eaf3fa0379a2"
 

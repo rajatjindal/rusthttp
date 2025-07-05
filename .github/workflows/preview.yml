@@ -41,4 +41,4 @@ jobs:
           fermyon_aka_token: ${{ secrets.FERMYON_AKA_TOKEN }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           undeploy: ${{ github.event.pull_request && github.event.action == 'closed' }}
-          account_id: "c5cd9b9d-81ff-452d-9039-63e10a59d445"
+          account_id: "79692a99-5c7f-4e32-b4db-eaf3fa0379a2"
